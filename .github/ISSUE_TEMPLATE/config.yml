@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Especificación maestra
+    url: https://github.com/jmmana/Warlock-Oraculo/blob/main/docs/product/Warlock-Oraculo-Especificacion-Maestra.md
+    about: Lee la sección 15 (backlog) antes de abrir un issue nuevo; es casi seguro que ya existe como WO-XXX.

@@ -1,0 +1,35 @@
+# Node / web
+node_modules/
+dist/
+build/
+.vite/
+.turbo/
+*.local
+.env
+.env.*
+!.env.example
+
+# Python / engine
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# Supabase local
+supabase/.branches/
+supabase/.temp/
+
+# Editors / OS
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Logs y artefactos locales
+*.log
+coverage/
+playwright-report/
+test-results/
