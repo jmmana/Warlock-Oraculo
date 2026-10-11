@@ -1,6 +1,6 @@
 # ADR-014: Pipeline asistido por IA para el arte de los Office Beans
 
-**Estado:** aceptado (revisión 2026-10-11; **revisión 2026-10-11b** incorpora el pipeline ya probado en Agent Viewer)
+**Estado:** aceptado (revisión 2026-10-11; **revisión 2026-10-11b** incorpora el pipeline ya probado en Agent Viewer; **revisión 2026-10-11c** registra el port de assets ya realizado)
 **Issues:** WO-055, WO-056, WO-057, WO-058
 
 ## Contexto
@@ -27,17 +27,22 @@ Se construye `tools/asset-forge/`: una herramienta de línea de comandos, fuera 
 
 La herramienta acelera la producción de los 1.632 frames objetivo (sección 5.3); no sustituye la aprobación de fichas, la guía común de proporción/luz/cámara, ni la revisión de continuidad y alpha a tamaño real de uso.
 
-## Reutilización de Agent Viewer: qué sí y qué no
+## Reutilización de Agent Viewer: qué se portó y qué sigue pendiente
 
-- **Sí, como semilla de estilo:** la ficha de referencia aprobada del CEO de Agent Viewer (`assets/crew/references/ceo-approved-concept.png`, MIT, mismo propietario) es un punto de partida razonable para uno de nuestros 6 arquetipos, en vez de empezar de cero. Extenderla a 8 direcciones y al tamaño de lienzo/ancla de la sección 5.3 (512×512, pivote `(0.5, 0.88)`, distinto al `256×352`/`(0.5, 0.9375)` de Crew) es trabajo nuevo, no una copia directa de píxeles.
-- **Sí, como proceso:** el pipeline de medición-y-manifest descrito arriba se adopta casi literal de `scripts/crew-clip-assets.mjs` de Agent Viewer.
-- **Pendiente de decisión, no asumido:** el catálogo de ~40 SVG de mobiliario/electrónica/efectos que exploró Agent Viewer en una rama (`feat/visual-assets-v1`, PR #43, nunca integrada a su `main`) coincide bastante con el inventario de la sección 5.5, pero la propia documentación de ese repositorio marca su procedencia como **no verificada de forma independiente** en esa revisión. Antes de portar esos archivos a este repositorio, alguien con autoridad sobre ambos proyectos debe confirmar autoría original y mover los archivos explícitamente; no se asume licencia limpia solo por ser del mismo dueño nominal. Mientras tanto, `WO-058` puede usar ese catálogo como referencia de qué objetos y ángulos hacen falta, sin copiar los archivos.
+**Ya portado (2026-10-11c), con autorización explícita del propietario de producto de ambos proyectos.** Procedencia completa, commits de origen y advertencias heredadas en [`assets/licenses/source-agent-viewer-2026-10-11.md`](../../assets/licenses/source-agent-viewer-2026-10-11.md):
+
+- **Semilla de estilo del CEO:** `assets/source/characters/ceo/` contiene la ficha de referencia aprobada, las 6 poses estáticas y el único ciclo de caminar real (prototipo) que existe en cualquiera de los dos proyectos. Es punto de partida, no asset final: su lienzo/ancla (`256×352`, `(0.5, 0.9375)`) y sus 4 direcciones no cumplen todavía la sección 5.3 (`512×512`, `(0.5, 0.88)`, 8 direcciones reales). Adaptarla y extenderla es trabajo de `WO-056`/`WO-057`, no algo ya terminado por copiarse.
+- **Punto de partida de los otros 5 arquetipos:** `assets/source/characters/other-archetypes/` tiene un frame estático por rol, igual que tenía Agent Viewer. No hay animación que heredar ahí; el trabajo es el mismo que empezar de cero.
+- **Mobiliario/electrónica/efectos:** `assets/source/{furniture,electronics,effects}/` tiene los ~41 SVG explorados en la rama no mergeada de Agent Viewer (PR #43). Su procedencia quedaba marcada como no verificada de forma independiente en el repositorio de origen; el port a este repositorio se autorizó explícitamente conociendo esa advertencia (ver el documento de procedencia), no porque la verificación automática la haya resuelto.
+- **El pipeline de medición-y-manifest** descrito arriba se adopta casi literal de `scripts/crew-clip-assets.mjs` de Agent Viewer.
+
+**Sigue pendiente, sin importar lo anterior:** nada en `assets/source/` es `approved`. Para cada arquetipo faltan las 8 direcciones reales (Crew solo cubre 4), la aprobación visual contra la biblia de estilo de `WO-055`, y el registro en el manifest versionado de `tools/asset-forge/` antes de usarse en el motor de escena.
 
 ## Alternativas consideradas
 
 - **Solo proceso manual (ilustradores humanos) sin herramienta:** más control de calidad desde el día uno, pero no escala a 1.632 frames en un proyecto de una persona; se descarta como único camino.
 - **Generación sin cola de revisión ni medición manual:** más rápido, pero es exactamente lo que Agent Viewer identificó como riesgo real (inconsistencias de escala/alpha entre frames) y contradice la regla de la sección 5.4 ("una hoja bonita no garantiza un sprite legible").
-- **Copiar el catálogo de muebles de la rama draft de Agent Viewer sin verificar procedencia:** descartado por ahora; ver sección anterior.
+- **Copiar el catálogo de muebles de la rama draft de Agent Viewer sin que el propietario de producto autorizara conociendo la advertencia de procedencia:** descartado; se hizo con autorización explícita (ver sección anterior y el documento de procedencia).
 
 ## Consecuencias
 

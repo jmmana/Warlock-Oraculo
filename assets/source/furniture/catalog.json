@@ -1,0 +1,1297 @@
+{
+  "schemaVersion": "1.0.0",
+  "project": "Agent Viewer Office Crew",
+  "coordinateSystem": {
+    "projection": "rectangular-2.5d",
+    "tileSize": 48
+  },
+  "geometryContract": {
+    "units": "logical pixels",
+    "anchor": "normalized fraction of logicalSize",
+    "footprint": "ground rectangle relative to anchor, not artwork bounds",
+    "screenRect": "source-local rectangle; render live content after artwork at the same transform",
+    "screenRects": "ordered source-local rectangles for multiple displays",
+    "surfaceRect": "source-local decorative compositing region",
+    "interactionPoints": "ground points relative to anchor",
+    "surfaceMounted": "ignore ground footprint when attached to supporting furniture",
+    "decorative": "does not block ground navigation"
+  },
+  "assets": [
+    {
+      "id": "furniture.desk-workstation",
+      "kind": "furniture",
+      "file": "assets/furniture/desk-workstation.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 144,
+        "height": 100
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.93
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "footprint": {
+        "x": -60,
+        "y": -17,
+        "width": 120,
+        "height": 34
+      },
+      "surfaceRect": {
+        "x": 21,
+        "y": 16,
+        "width": 102,
+        "height": 13
+      },
+      "interactionPoints": [
+        {
+          "x": 0,
+          "y": 39,
+          "action": "work"
+        }
+      ],
+      "theme": "workspace"
+    },
+    {
+      "id": "furniture.desk-executive",
+      "kind": "furniture",
+      "file": "assets/furniture/desk-executive.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 168,
+        "height": 100
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.93
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "footprint": {
+        "x": -72,
+        "y": -17,
+        "width": 144,
+        "height": 34
+      },
+      "surfaceRect": {
+        "x": 21,
+        "y": 16,
+        "width": 126,
+        "height": 13
+      },
+      "interactionPoints": [
+        {
+          "x": 0,
+          "y": 39,
+          "action": "work"
+        }
+      ],
+      "theme": "executive"
+    },
+    {
+      "id": "furniture.chair-ergonomic",
+      "kind": "furniture",
+      "file": "assets/furniture/chair-ergonomic.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 64,
+        "height": 94
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.93
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "footprint": {
+        "x": -18,
+        "y": -12,
+        "width": 36,
+        "height": 24
+      },
+      "seatPoint": {
+        "x": 0,
+        "y": -19
+      },
+      "interactionPoints": [
+        {
+          "x": 0,
+          "y": 21,
+          "action": "sit"
+        }
+      ]
+    },
+    {
+      "id": "furniture.chair-executive",
+      "kind": "furniture",
+      "file": "assets/furniture/chair-executive.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 64,
+        "height": 94
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.93
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "footprint": {
+        "x": -18,
+        "y": -12,
+        "width": 36,
+        "height": 24
+      },
+      "seatPoint": {
+        "x": 0,
+        "y": -19
+      },
+      "interactionPoints": [
+        {
+          "x": 0,
+          "y": 21,
+          "action": "sit"
+        }
+      ]
+    },
+    {
+      "id": "furniture.meeting-table",
+      "kind": "furniture",
+      "file": "assets/furniture/meeting-table.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 224,
+        "height": 130
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.93
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "footprint": {
+        "x": -95,
+        "y": -36,
+        "width": 190,
+        "height": 72
+      },
+      "surfaceRect": {
+        "x": 29,
+        "y": 23,
+        "width": 166,
+        "height": 42
+      },
+      "interactionPoints": [
+        {
+          "x": -80,
+          "y": 55,
+          "action": "meet"
+        },
+        {
+          "x": 0,
+          "y": 55,
+          "action": "meet"
+        },
+        {
+          "x": 80,
+          "y": 55,
+          "action": "meet"
+        },
+        {
+          "x": -80,
+          "y": -58,
+          "action": "meet"
+        },
+        {
+          "x": 0,
+          "y": -58,
+          "action": "meet"
+        },
+        {
+          "x": 80,
+          "y": -58,
+          "action": "meet"
+        }
+      ]
+    },
+    {
+      "id": "furniture.sofa-lounge",
+      "kind": "furniture",
+      "file": "assets/furniture/sofa-lounge.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 156,
+        "height": 98
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.93
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "footprint": {
+        "x": -66,
+        "y": -17.5,
+        "width": 132,
+        "height": 35
+      },
+      "interactionPoints": [
+        {
+          "x": -32,
+          "y": 33,
+          "action": "rest"
+        },
+        {
+          "x": 32,
+          "y": 33,
+          "action": "rest"
+        }
+      ]
+    },
+    {
+      "id": "furniture.coffee-table",
+      "kind": "furniture",
+      "file": "assets/furniture/coffee-table.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 98,
+        "height": 64
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.93
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "footprint": {
+        "x": -37,
+        "y": -12,
+        "width": 74,
+        "height": 24
+      },
+      "surfaceRect": {
+        "x": 17,
+        "y": 10,
+        "width": 64,
+        "height": 13
+      }
+    },
+    {
+      "id": "furniture.plant-floor",
+      "kind": "furniture",
+      "file": "assets/furniture/plant-floor.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 72,
+        "height": 102
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.93
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "footprint": {
+        "x": -17,
+        "y": -11,
+        "width": 34,
+        "height": 22
+      },
+      "decorative": true
+    },
+    {
+      "id": "furniture.plant-desk",
+      "kind": "furniture",
+      "file": "assets/furniture/plant-desk.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 42,
+        "height": 58
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.93
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "footprint": {
+        "x": -11,
+        "y": -7,
+        "width": 22,
+        "height": 14
+      },
+      "decorative": true
+    },
+    {
+      "id": "furniture.bookshelf",
+      "kind": "furniture",
+      "file": "assets/furniture/bookshelf.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 98,
+        "height": 138
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.93
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "footprint": {
+        "x": -38,
+        "y": -12.5,
+        "width": 76,
+        "height": 25
+      }
+    },
+    {
+      "id": "furniture.filing-cabinet",
+      "kind": "furniture",
+      "file": "assets/furniture/filing-cabinet.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 66,
+        "height": 96
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.93
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "footprint": {
+        "x": -22,
+        "y": -14,
+        "width": 44,
+        "height": 28
+      },
+      "interactionPoints": [
+        {
+          "x": 0,
+          "y": 26,
+          "action": "files"
+        }
+      ]
+    },
+    {
+      "id": "furniture.desk-lamp",
+      "kind": "furniture",
+      "file": "assets/furniture/desk-lamp.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 58,
+        "height": 70
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.93
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "decorative": true
+    },
+    {
+      "id": "furniture.whiteboard",
+      "kind": "furniture",
+      "file": "assets/furniture/whiteboard.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 150,
+        "height": 130
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.93
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "footprint": {
+        "x": -56,
+        "y": -12,
+        "width": 112,
+        "height": 24
+      },
+      "screenRect": {
+        "x": 15,
+        "y": 17,
+        "width": 120,
+        "height": 60
+      },
+      "interactionPoints": [
+        {
+          "x": 0,
+          "y": 35,
+          "action": "present"
+        }
+      ]
+    },
+    {
+      "id": "furniture.kanban-board",
+      "kind": "furniture",
+      "file": "assets/furniture/kanban-board.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 150,
+        "height": 116
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.93
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "footprint": {
+        "x": -56,
+        "y": -11.5,
+        "width": 112,
+        "height": 23
+      },
+      "decorative": true,
+      "interactionPoints": [
+        {
+          "x": 0,
+          "y": 32,
+          "action": "plan"
+        }
+      ]
+    },
+    {
+      "id": "furniture.coffee-bar",
+      "kind": "furniture",
+      "file": "assets/furniture/coffee-bar.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 154,
+        "height": 104
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.93
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "footprint": {
+        "x": -64,
+        "y": -17,
+        "width": 128,
+        "height": 34
+      },
+      "surfaceRect": {
+        "x": 20,
+        "y": 12,
+        "width": 113,
+        "height": 8
+      },
+      "interactionPoints": [
+        {
+          "x": 0,
+          "y": 38,
+          "action": "coffee"
+        }
+      ]
+    },
+    {
+      "id": "furniture.stool",
+      "kind": "furniture",
+      "file": "assets/furniture/stool.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 44,
+        "height": 70
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.93
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "footprint": {
+        "x": -15,
+        "y": -10,
+        "width": 30,
+        "height": 20
+      },
+      "interactionPoints": [
+        {
+          "x": 0,
+          "y": 22,
+          "action": "sit"
+        }
+      ]
+    },
+    {
+      "id": "furniture.coffee-cup",
+      "kind": "furniture",
+      "file": "assets/furniture/coffee-cup.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 34,
+        "height": 36
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.84
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "decorative": true,
+      "attachPoint": {
+        "x": 17,
+        "y": 19
+      }
+    },
+    {
+      "id": "furniture.clipboard",
+      "kind": "furniture",
+      "file": "assets/furniture/clipboard.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 36,
+        "height": 46
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "decorative": true
+    },
+    {
+      "id": "furniture.headphones",
+      "kind": "furniture",
+      "file": "assets/furniture/headphones.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 44,
+        "height": 42
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.93
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "decorative": true
+    },
+    {
+      "id": "furniture.document-folder",
+      "kind": "furniture",
+      "file": "assets/furniture/document-folder.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 46,
+        "height": 38
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.93
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "decorative": true
+    },
+    {
+      "id": "electronics.monitor",
+      "kind": "electronics",
+      "file": "assets/electronics/monitor.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 78,
+        "height": 74
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.93
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "screenRect": {
+        "x": 10,
+        "y": 11,
+        "width": 58,
+        "height": 32
+      },
+      "footprint": {
+        "x": -21,
+        "y": -7,
+        "width": 42,
+        "height": 14
+      },
+      "surfaceMounted": true
+    },
+    {
+      "id": "electronics.dual-monitor",
+      "kind": "electronics",
+      "file": "assets/electronics/dual-monitor.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 136,
+        "height": 76
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.93
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "screenRects": [
+        {
+          "x": 8,
+          "y": 12,
+          "width": 53,
+          "height": 31
+        },
+        {
+          "x": 75,
+          "y": 12,
+          "width": 53,
+          "height": 31
+        }
+      ],
+      "footprint": {
+        "x": -22.5,
+        "y": -7,
+        "width": 45,
+        "height": 14
+      },
+      "surfaceMounted": true
+    },
+    {
+      "id": "electronics.laptop",
+      "kind": "electronics",
+      "file": "assets/electronics/laptop.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 78,
+        "height": 64
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.93
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "screenRect": {
+        "x": 15,
+        "y": 11,
+        "width": 48,
+        "height": 26
+      },
+      "footprint": {
+        "x": -32.5,
+        "y": -9,
+        "width": 65,
+        "height": 18
+      },
+      "surfaceMounted": true
+    },
+    {
+      "id": "electronics.tv-display",
+      "kind": "electronics",
+      "file": "assets/electronics/tv-display.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 164,
+        "height": 102
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.93
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "screenRect": {
+        "x": 13,
+        "y": 14,
+        "width": 138,
+        "height": 60
+      },
+      "footprint": {
+        "x": -38,
+        "y": -8,
+        "width": 76,
+        "height": 16
+      },
+      "surfaceMounted": true
+    },
+    {
+      "id": "electronics.office-phone",
+      "kind": "electronics",
+      "file": "assets/electronics/office-phone.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 64,
+        "height": 50
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.93
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "screenRect": {
+        "x": 22,
+        "y": 21,
+        "width": 20,
+        "height": 8
+      },
+      "surfaceMounted": true,
+      "footprint": {
+        "x": -24,
+        "y": -10,
+        "width": 48,
+        "height": 20
+      },
+      "interactionPoints": [
+        {
+          "x": 0,
+          "y": 22,
+          "action": "call"
+        }
+      ]
+    },
+    {
+      "id": "electronics.conference-camera",
+      "kind": "electronics",
+      "file": "assets/electronics/conference-camera.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 60,
+        "height": 34
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.93
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "surfaceMounted": true,
+      "footprint": {
+        "x": -21,
+        "y": -6,
+        "width": 42,
+        "height": 12
+      }
+    },
+    {
+      "id": "electronics.speakerphone",
+      "kind": "electronics",
+      "file": "assets/electronics/speakerphone.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 58,
+        "height": 37
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.93
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "surfaceMounted": true,
+      "footprint": {
+        "x": -21.5,
+        "y": -10,
+        "width": 43,
+        "height": 20
+      }
+    },
+    {
+      "id": "electronics.coffee-machine",
+      "kind": "electronics",
+      "file": "assets/electronics/coffee-machine.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 64,
+        "height": 82
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.93
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "surfaceMounted": true,
+      "footprint": {
+        "x": -22,
+        "y": -12,
+        "width": 44,
+        "height": 24
+      },
+      "interactionPoints": [
+        {
+          "x": 0,
+          "y": 28,
+          "action": "coffee"
+        }
+      ]
+    },
+    {
+      "id": "electronics.water-dispenser",
+      "kind": "electronics",
+      "file": "assets/electronics/water-dispenser.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 56,
+        "height": 108
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.93
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "footprint": {
+        "x": -17,
+        "y": -12.5,
+        "width": 34,
+        "height": 25
+      },
+      "interactionPoints": [
+        {
+          "x": 0,
+          "y": 28,
+          "action": "water"
+        }
+      ]
+    },
+    {
+      "id": "electronics.router",
+      "kind": "electronics",
+      "file": "assets/electronics/router.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 64,
+        "height": 50
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.93
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "surfaceMounted": true,
+      "footprint": {
+        "x": -21.5,
+        "y": -9,
+        "width": 43,
+        "height": 18
+      }
+    },
+    {
+      "id": "electronics.tablet",
+      "kind": "electronics",
+      "file": "assets/electronics/tablet.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 42,
+        "height": 56
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.89
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "screenRect": {
+        "x": 9,
+        "y": 9,
+        "width": 24,
+        "height": 33
+      },
+      "decorative": true
+    },
+    {
+      "id": "electronics.smartphone",
+      "kind": "electronics",
+      "file": "assets/electronics/smartphone.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 28,
+        "height": 46
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.93
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "screenRect": {
+        "x": 7,
+        "y": 9,
+        "width": 14,
+        "height": 24
+      },
+      "decorative": true
+    },
+    {
+      "id": "electronics.calculator",
+      "kind": "electronics",
+      "file": "assets/electronics/calculator.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 34,
+        "height": 46
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.93
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "screenRect": {
+        "x": 9,
+        "y": 9,
+        "width": 16,
+        "height": 9
+      },
+      "decorative": true
+    },
+    {
+      "id": "effect.wifi",
+      "kind": "effect",
+      "file": "assets/effects/wifi.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 40,
+        "height": 40
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "decorative": true,
+      "compositing": "runtime-state-overlay"
+    },
+    {
+      "id": "effect.call",
+      "kind": "effect",
+      "file": "assets/effects/call.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 40,
+        "height": 40
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "decorative": true,
+      "compositing": "runtime-state-overlay"
+    },
+    {
+      "id": "effect.check",
+      "kind": "effect",
+      "file": "assets/effects/check.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 40,
+        "height": 40
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "decorative": true,
+      "compositing": "runtime-state-overlay"
+    },
+    {
+      "id": "effect.blocked",
+      "kind": "effect",
+      "file": "assets/effects/blocked.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 40,
+        "height": 40
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "decorative": true,
+      "compositing": "runtime-state-overlay"
+    },
+    {
+      "id": "effect.tool",
+      "kind": "effect",
+      "file": "assets/effects/tool.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 40,
+        "height": 40
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "decorative": true,
+      "compositing": "runtime-state-overlay"
+    },
+    {
+      "id": "effect.thought",
+      "kind": "effect",
+      "file": "assets/effects/thought.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 40,
+        "height": 40
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "decorative": true,
+      "compositing": "runtime-state-overlay"
+    },
+    {
+      "id": "effect.alert",
+      "kind": "effect",
+      "file": "assets/effects/alert.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 40,
+        "height": 40
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "decorative": true,
+      "compositing": "runtime-state-overlay"
+    },
+    {
+      "id": "effect.sync",
+      "kind": "effect",
+      "file": "assets/effects/sync.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 40,
+        "height": 40
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "decorative": true,
+      "compositing": "runtime-state-overlay"
+    },
+    {
+      "id": "effect.terminal",
+      "kind": "effect",
+      "file": "assets/effects/terminal.svg",
+      "mimeType": "image/svg+xml",
+      "status": "prototype",
+      "logicalSize": {
+        "width": 40,
+        "height": 40
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "frames": 1,
+      "fps": 0,
+      "loop": false,
+      "license": "MIT",
+      "provenance": "original-agent-viewer-vector-prototype",
+      "decorative": true,
+      "compositing": "runtime-state-overlay"
+    }
+  ],
+  "layouts": [
+    {
+      "id": "director-suite",
+      "file": "assets/rooms/director-suite/layout.json"
+    },
+    {
+      "id": "meeting-room",
+      "file": "assets/rooms/meeting-room/layout.json"
+    },
+    {
+      "id": "coffee-area",
+      "file": "assets/rooms/coffee-area/layout.json"
+    }
+  ]
+}

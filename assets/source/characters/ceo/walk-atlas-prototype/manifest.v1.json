@@ -1,0 +1,769 @@
+{
+  "schemaVersion": 1,
+  "clips": [
+    {
+      "id": "ceo.walk.front.v1",
+      "role": "ceo",
+      "variant": "default",
+      "clip": "walk",
+      "facing": "front",
+      "version": 1,
+      "status": "prototype",
+      "license": "MIT",
+      "file": "assets/crew/clips/ceo-walk-front-v1.png",
+      "sha256": "56f91e9389bba424586cd6c853400707fc112ba09e57bc1362599ddbf7d009ad",
+      "width": 1512,
+      "height": 1040,
+      "resolution": {
+        "width": 256,
+        "height": 352
+      },
+      "fps": 8,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9375
+      },
+      "loop": true,
+      "provenance": {
+        "tool": "image_gen built-in",
+        "date": "2026-10-09",
+        "sourceCommit": "ba155c3",
+        "reference": "assets/crew/bank/characters/ceo/idle-front.png",
+        "promptFile": "assets/crew/origins/walk-117/frontPrompt.txt",
+        "promptSha256": "a629548ef01f3277213e344aef2595d9bc4a7b9d87ab1095b333d397a3150d3a"
+      },
+      "review": {
+        "status": "prototype-reviewed",
+        "reviewer": "Codex + root visual review",
+        "notes": "Identidad y cambios reales de brazos, rodillas y suelas revisados. Diferencias de escala/anchura y residuos alfa siguen pendientes de arte final. La locomoción física pertenece a #129/#118."
+      },
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "width": 378,
+          "height": 492,
+          "opaqueBounds": {
+            "minX": 48,
+            "minY": 11,
+            "maxX": 308,
+            "maxY": 486
+          },
+          "anchor": {
+            "x": 178,
+            "y": 487
+          },
+          "durationMs": 125,
+          "index": 0,
+          "rgbaSha256": "8b0992df500a4ad82882b503453cdf49cae5af20c0fc8ac0abf840d181a1b335"
+        },
+        {
+          "x": 378,
+          "y": 0,
+          "width": 378,
+          "height": 492,
+          "opaqueBounds": {
+            "minX": 47,
+            "minY": 13,
+            "maxX": 307,
+            "maxY": 485
+          },
+          "anchor": {
+            "x": 177,
+            "y": 486
+          },
+          "durationMs": 125,
+          "index": 1,
+          "rgbaSha256": "f26c4afa8cadaf5afcae7aa7a1e08c0e2d3b08cbefdad94f3c896fe7e75db578"
+        },
+        {
+          "x": 756,
+          "y": 0,
+          "width": 378,
+          "height": 492,
+          "opaqueBounds": {
+            "minX": 54,
+            "minY": 13,
+            "maxX": 315,
+            "maxY": 484
+          },
+          "anchor": {
+            "x": 184.5,
+            "y": 485
+          },
+          "durationMs": 125,
+          "index": 2,
+          "rgbaSha256": "59fd3f6761f867e5fb3f213b1debd16a388685d5297fa6d7161450f43c8c9741"
+        },
+        {
+          "x": 1134,
+          "y": 0,
+          "width": 378,
+          "height": 492,
+          "opaqueBounds": {
+            "minX": 60,
+            "minY": 10,
+            "maxX": 317,
+            "maxY": 486
+          },
+          "anchor": {
+            "x": 188.5,
+            "y": 487
+          },
+          "durationMs": 125,
+          "index": 3,
+          "rgbaSha256": "959c1cb831a8d7c59e69cba2001b2c796f8abf8ee9f4304ff49624434c093e93"
+        },
+        {
+          "x": 0,
+          "y": 492,
+          "width": 378,
+          "height": 492,
+          "opaqueBounds": {
+            "minX": 55,
+            "minY": 6,
+            "maxX": 316,
+            "maxY": 489
+          },
+          "anchor": {
+            "x": 185.5,
+            "y": 490
+          },
+          "durationMs": 125,
+          "index": 4,
+          "rgbaSha256": "d625df0b6a4890f292b6101afcd0a39ad223a0f09f86cf459cf3bff19e6ef1fc"
+        },
+        {
+          "x": 378,
+          "y": 492,
+          "width": 378,
+          "height": 492,
+          "opaqueBounds": {
+            "minX": 58,
+            "minY": 8,
+            "maxX": 321,
+            "maxY": 487
+          },
+          "anchor": {
+            "x": 189.5,
+            "y": 488
+          },
+          "durationMs": 125,
+          "index": 5,
+          "rgbaSha256": "75d92b4a527179eac3a0dada31f787d45e3251c846a95001f625bab19f011c19"
+        },
+        {
+          "x": 756,
+          "y": 492,
+          "width": 378,
+          "height": 492,
+          "opaqueBounds": {
+            "minX": 50,
+            "minY": 5,
+            "maxX": 316,
+            "maxY": 489
+          },
+          "anchor": {
+            "x": 183,
+            "y": 490
+          },
+          "durationMs": 125,
+          "index": 6,
+          "rgbaSha256": "9ad536cd38555f361c42b293fa3464e73f81b5e540c89a3b7f0541b378a2002a"
+        },
+        {
+          "x": 1134,
+          "y": 492,
+          "width": 378,
+          "height": 492,
+          "opaqueBounds": {
+            "minX": 60,
+            "minY": 5,
+            "maxX": 324,
+            "maxY": 489
+          },
+          "anchor": {
+            "x": 192,
+            "y": 490
+          },
+          "durationMs": 125,
+          "index": 7,
+          "rgbaSha256": "4347eab8e9dfdc82d4d1fe7c916596604ebf307e3293725f3257d2f3d547387e"
+        }
+      ]
+    },
+    {
+      "id": "ceo.walk.right.v1",
+      "role": "ceo",
+      "variant": "default",
+      "clip": "walk",
+      "facing": "right",
+      "version": 1,
+      "status": "prototype",
+      "license": "MIT",
+      "file": "assets/crew/clips/ceo-walk-right-v1.png",
+      "sha256": "160655e85538bdc6b950722f98afe640d2e6dd5b64b03831bcca19b5d9ee284c",
+      "width": 1513,
+      "height": 1040,
+      "resolution": {
+        "width": 256,
+        "height": 352
+      },
+      "fps": 8,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9375
+      },
+      "loop": true,
+      "provenance": {
+        "tool": "image_gen built-in",
+        "date": "2026-10-09",
+        "sourceCommit": "ba155c3",
+        "reference": "assets/crew/bank/characters/ceo/idle-right.png",
+        "promptFile": "assets/crew/origins/walk-117/rightPrompt.txt",
+        "promptSha256": "175894b4455b4bf846720646be5eeaeefd423e7c5e17ca6cfc25ef2e5db5e196"
+      },
+      "review": {
+        "status": "prototype-reviewed",
+        "reviewer": "Codex + root visual review",
+        "notes": "Identidad y cambios reales de brazos, rodillas y suelas revisados. Diferencias de escala/anchura y residuos alfa siguen pendientes de arte final. La locomoción física pertenece a #129/#118."
+      },
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "width": 378,
+          "height": 510,
+          "opaqueBounds": {
+            "minX": 72,
+            "minY": 14,
+            "maxX": 342,
+            "maxY": 496
+          },
+          "anchor": {
+            "x": 207,
+            "y": 497
+          },
+          "durationMs": 125,
+          "index": 0,
+          "rgbaSha256": "c8bec3919f7708eec02001bb92ba8183a89b2826aff76a5fb8d06ce52dc55271"
+        },
+        {
+          "x": 378,
+          "y": 0,
+          "width": 378,
+          "height": 510,
+          "opaqueBounds": {
+            "minX": 68,
+            "minY": 16,
+            "maxX": 328,
+            "maxY": 495
+          },
+          "anchor": {
+            "x": 198,
+            "y": 496
+          },
+          "durationMs": 125,
+          "index": 1,
+          "rgbaSha256": "5fc8f121c1b2fdf0ff57ea4352d1c2c5801059c1f1107d0ea33f9ce8a4950d60"
+        },
+        {
+          "x": 756,
+          "y": 0,
+          "width": 378,
+          "height": 510,
+          "opaqueBounds": {
+            "minX": 66,
+            "minY": 12,
+            "maxX": 327,
+            "maxY": 495
+          },
+          "anchor": {
+            "x": 196.5,
+            "y": 496
+          },
+          "durationMs": 125,
+          "index": 2,
+          "rgbaSha256": "f90b7ee0575af931dd7b0812aefc70b0222e4cbbbeba0f44b06d3d0eb56dd52d"
+        },
+        {
+          "x": 1134,
+          "y": 0,
+          "width": 379,
+          "height": 510,
+          "opaqueBounds": {
+            "minX": 64,
+            "minY": 11,
+            "maxX": 324,
+            "maxY": 494
+          },
+          "anchor": {
+            "x": 194,
+            "y": 495
+          },
+          "durationMs": 125,
+          "index": 3,
+          "rgbaSha256": "d20ddc0ad4ff055ef1b4c024ae8f86d50d8942cb206ccdae678c72cc5a080a02"
+        },
+        {
+          "x": 0,
+          "y": 510,
+          "width": 378,
+          "height": 510,
+          "opaqueBounds": {
+            "minX": 70,
+            "minY": 14,
+            "maxX": 338,
+            "maxY": 496
+          },
+          "anchor": {
+            "x": 204,
+            "y": 497
+          },
+          "durationMs": 125,
+          "index": 4,
+          "rgbaSha256": "b36aa4a60865f61dd62ed3890b257cca6487286504a43d70bb96dc76d2980b53"
+        },
+        {
+          "x": 378,
+          "y": 510,
+          "width": 378,
+          "height": 510,
+          "opaqueBounds": {
+            "minX": 67,
+            "minY": 18,
+            "maxX": 327,
+            "maxY": 498
+          },
+          "anchor": {
+            "x": 197,
+            "y": 499
+          },
+          "durationMs": 125,
+          "index": 5,
+          "rgbaSha256": "47b6d8ae03528808dbc5de66027bc35e8579402e4fb7f9cc8b5695287faddc8f"
+        },
+        {
+          "x": 756,
+          "y": 510,
+          "width": 378,
+          "height": 510,
+          "opaqueBounds": {
+            "minX": 66,
+            "minY": 21,
+            "maxX": 329,
+            "maxY": 498
+          },
+          "anchor": {
+            "x": 197.5,
+            "y": 499
+          },
+          "durationMs": 125,
+          "index": 6,
+          "rgbaSha256": "6097394a188fce665b68e103ec910627969265cba52787fc836349db670aebd2"
+        },
+        {
+          "x": 1134,
+          "y": 510,
+          "width": 379,
+          "height": 510,
+          "opaqueBounds": {
+            "minX": 60,
+            "minY": 13,
+            "maxX": 325,
+            "maxY": 495
+          },
+          "anchor": {
+            "x": 192.5,
+            "y": 496
+          },
+          "durationMs": 125,
+          "index": 7,
+          "rgbaSha256": "3c0b90fe964617ed6082b1212482807929d3d7b0075456eb8094ec4e69246cd6"
+        }
+      ]
+    },
+    {
+      "id": "ceo.walk.back.v1",
+      "role": "ceo",
+      "variant": "default",
+      "clip": "walk",
+      "facing": "back",
+      "version": 1,
+      "status": "prototype",
+      "license": "MIT",
+      "file": "assets/crew/clips/ceo-walk-back-v1.png",
+      "sha256": "085e90e70d1af042b996d523658eae92ed0b90892a9ddb3953891a8ae703bee4",
+      "width": 1513,
+      "height": 1039,
+      "resolution": {
+        "width": 256,
+        "height": 352
+      },
+      "fps": 8,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9375
+      },
+      "loop": true,
+      "provenance": {
+        "tool": "image_gen built-in",
+        "date": "2026-10-09",
+        "sourceCommit": "ba155c3",
+        "reference": "assets/crew/bank/characters/ceo/idle-back.png",
+        "promptFile": "assets/crew/origins/walk-117/backPrompt.txt",
+        "promptSha256": "341c24a9f4464d6a9f8ee0a1655722a8dde1aad96fe356db718e5f8e57504076"
+      },
+      "review": {
+        "status": "prototype-reviewed",
+        "reviewer": "Codex + root visual review",
+        "notes": "Identidad y cambios reales de brazos, rodillas y suelas revisados. Diferencias de escala/anchura y residuos alfa siguen pendientes de arte final. La locomoción física pertenece a #129/#118."
+      },
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "width": 378,
+          "height": 510,
+          "opaqueBounds": {
+            "minX": 62,
+            "minY": 8,
+            "maxX": 345,
+            "maxY": 505
+          },
+          "anchor": {
+            "x": 203.5,
+            "y": 506
+          },
+          "durationMs": 125,
+          "index": 0,
+          "rgbaSha256": "f26cdd819e1411cfa2aa67db9ef9b48c2357bee7a1807280d020f230fa8ca7be"
+        },
+        {
+          "x": 378,
+          "y": 0,
+          "width": 378,
+          "height": 510,
+          "opaqueBounds": {
+            "minX": 60,
+            "minY": 7,
+            "maxX": 344,
+            "maxY": 497
+          },
+          "anchor": {
+            "x": 202,
+            "y": 498
+          },
+          "durationMs": 125,
+          "index": 1,
+          "rgbaSha256": "229e7afed80539432b9d45cb00807ff18ac7505c4fddbbe37772408111d69633"
+        },
+        {
+          "x": 756,
+          "y": 0,
+          "width": 378,
+          "height": 510,
+          "opaqueBounds": {
+            "minX": 50,
+            "minY": 8,
+            "maxX": 331,
+            "maxY": 500
+          },
+          "anchor": {
+            "x": 190.5,
+            "y": 501
+          },
+          "durationMs": 125,
+          "index": 2,
+          "rgbaSha256": "3622a3b7c24107bb984e471d519c4b8d15d1a22d21645395896d66b9e2c9eaa2"
+        },
+        {
+          "x": 1134,
+          "y": 0,
+          "width": 379,
+          "height": 510,
+          "opaqueBounds": {
+            "minX": 52,
+            "minY": 8,
+            "maxX": 331,
+            "maxY": 496
+          },
+          "anchor": {
+            "x": 191.5,
+            "y": 497
+          },
+          "durationMs": 125,
+          "index": 3,
+          "rgbaSha256": "7aa49cbb372d248c3729b5f1478551d96f72367345f83bca2816291894a8f532"
+        },
+        {
+          "x": 0,
+          "y": 510,
+          "width": 378,
+          "height": 510,
+          "opaqueBounds": {
+            "minX": 61,
+            "minY": 7,
+            "maxX": 345,
+            "maxY": 497
+          },
+          "anchor": {
+            "x": 203,
+            "y": 498
+          },
+          "durationMs": 125,
+          "index": 4,
+          "rgbaSha256": "2b4164c2448d1ed850a7f8e4264a502db99e886f08e36d71c1e713e929f3e47a"
+        },
+        {
+          "x": 378,
+          "y": 510,
+          "width": 378,
+          "height": 510,
+          "opaqueBounds": {
+            "minX": 62,
+            "minY": 3,
+            "maxX": 346,
+            "maxY": 491
+          },
+          "anchor": {
+            "x": 204,
+            "y": 492
+          },
+          "durationMs": 125,
+          "index": 5,
+          "rgbaSha256": "d536904f9d4cd4fc6f3ebf517da91f8b6c0156a6403c4103683f2b24ab22f8f7"
+        },
+        {
+          "x": 756,
+          "y": 510,
+          "width": 378,
+          "height": 510,
+          "opaqueBounds": {
+            "minX": 53,
+            "minY": 3,
+            "maxX": 338,
+            "maxY": 497
+          },
+          "anchor": {
+            "x": 195.5,
+            "y": 498
+          },
+          "durationMs": 125,
+          "index": 6,
+          "rgbaSha256": "654fce9ef86313275ac094ff89b253543e66c04893d2c726e2886423eaf28a4c"
+        },
+        {
+          "x": 1134,
+          "y": 510,
+          "width": 379,
+          "height": 510,
+          "opaqueBounds": {
+            "minX": 51,
+            "minY": 3,
+            "maxX": 336,
+            "maxY": 497
+          },
+          "anchor": {
+            "x": 193.5,
+            "y": 498
+          },
+          "durationMs": 125,
+          "index": 7,
+          "rgbaSha256": "955f8019d236893c2dc084c8f8df6ae8789feae16d6a852080df7c2f4a80e72f"
+        }
+      ]
+    },
+    {
+      "id": "ceo.walk.left.v2",
+      "role": "ceo",
+      "variant": "default",
+      "clip": "walk",
+      "facing": "left",
+      "version": 2,
+      "status": "prototype",
+      "license": "MIT",
+      "file": "assets/crew/clips/ceo-walk-left-v2.png",
+      "sha256": "e5cc20bedbb5238c69272c9a3acd917e2eabde144fc56e74fe4f2a6cb121c5c9",
+      "width": 1470,
+      "height": 1070,
+      "resolution": {
+        "width": 256,
+        "height": 352
+      },
+      "fps": 8,
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9375
+      },
+      "loop": true,
+      "provenance": {
+        "tool": "image_gen built-in",
+        "date": "2026-10-09",
+        "sourceCommit": "ba155c3",
+        "reference": "assets/crew/bank/characters/ceo/idle-left.png",
+        "promptFile": "assets/crew/origins/walk-117/leftV2Prompt.txt",
+        "promptSha256": "42ddaf40485b4b6f86a28ff67524d71347bee9e38cc62e8241e7daa3d699a093"
+      },
+      "review": {
+        "status": "prototype-reviewed",
+        "reviewer": "Codex + root visual review",
+        "notes": "Identidad y cambios reales de brazos, rodillas y suelas revisados. Diferencias de escala/anchura y residuos alfa siguen pendientes de arte final. La locomoción física pertenece a #129/#118."
+      },
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "width": 367,
+          "height": 527,
+          "opaqueBounds": {
+            "minX": 44,
+            "minY": 13,
+            "maxX": 315,
+            "maxY": 508
+          },
+          "anchor": {
+            "x": 179.5,
+            "y": 509
+          },
+          "durationMs": 125,
+          "index": 0,
+          "rgbaSha256": "a6d2f83198dff2aaafdd7f0d802ab3cd036f954affa485b663667e4c48f0fb75"
+        },
+        {
+          "x": 367,
+          "y": 0,
+          "width": 368,
+          "height": 527,
+          "opaqueBounds": {
+            "minX": 54,
+            "minY": 14,
+            "maxX": 304,
+            "maxY": 511
+          },
+          "anchor": {
+            "x": 179,
+            "y": 512
+          },
+          "durationMs": 125,
+          "index": 1,
+          "rgbaSha256": "13b11dec2de8952c216e26fd81f941c1865ac463bdf39d766d24ca6a7d69cab1"
+        },
+        {
+          "x": 735,
+          "y": 0,
+          "width": 367,
+          "height": 527,
+          "opaqueBounds": {
+            "minX": 51,
+            "minY": 16,
+            "maxX": 301,
+            "maxY": 510
+          },
+          "anchor": {
+            "x": 176,
+            "y": 511
+          },
+          "durationMs": 125,
+          "index": 2,
+          "rgbaSha256": "f4b4e0766de0935cc37bddba0cfb58ce83905cf0cbaee7ebf3e06e6ee0566776"
+        },
+        {
+          "x": 1102,
+          "y": 0,
+          "width": 368,
+          "height": 527,
+          "opaqueBounds": {
+            "minX": 61,
+            "minY": 16,
+            "maxX": 313,
+            "maxY": 509
+          },
+          "anchor": {
+            "x": 187,
+            "y": 510
+          },
+          "durationMs": 125,
+          "index": 3,
+          "rgbaSha256": "3010d42858f945bc7d9658c4d266144ef29d08c5091a57252a8674beff2b483f"
+        },
+        {
+          "x": 0,
+          "y": 527,
+          "width": 367,
+          "height": 527,
+          "opaqueBounds": {
+            "minX": 36,
+            "minY": 15,
+            "maxX": 332,
+            "maxY": 505
+          },
+          "anchor": {
+            "x": 184,
+            "y": 506
+          },
+          "durationMs": 125,
+          "index": 4,
+          "rgbaSha256": "e77389c940331f60dbba6ca2f11f16a3ae38d0ef023db8569b103da57a3deaf2"
+        },
+        {
+          "x": 367,
+          "y": 527,
+          "width": 368,
+          "height": 527,
+          "opaqueBounds": {
+            "minX": 56,
+            "minY": 18,
+            "maxX": 310,
+            "maxY": 509
+          },
+          "anchor": {
+            "x": 183,
+            "y": 510
+          },
+          "durationMs": 125,
+          "index": 5,
+          "rgbaSha256": "9124e0950cddefe7dfb7c03794653ba956983e596c21797d46dd0c5045943f1d"
+        },
+        {
+          "x": 735,
+          "y": 527,
+          "width": 367,
+          "height": 527,
+          "opaqueBounds": {
+            "minX": 58,
+            "minY": 17,
+            "maxX": 313,
+            "maxY": 513
+          },
+          "anchor": {
+            "x": 185.5,
+            "y": 514
+          },
+          "durationMs": 125,
+          "index": 6,
+          "rgbaSha256": "4eab58692ad4681e320b5cb59dcaba5cd9d1b73805c79b6966426b959611aaad"
+        },
+        {
+          "x": 1102,
+          "y": 527,
+          "width": 368,
+          "height": 527,
+          "opaqueBounds": {
+            "minX": 43,
+            "minY": 19,
+            "maxX": 331,
+            "maxY": 506
+          },
+          "anchor": {
+            "x": 187,
+            "y": 507
+          },
+          "durationMs": 125,
+          "index": 7,
+          "rgbaSha256": "e5dd317109ee2c50cd15572196970db25443d339f97c5cf87c6cffe016d3baac"
+        }
+      ]
+    }
+  ]
+}
