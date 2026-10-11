@@ -212,24 +212,33 @@ flowchart TD
   A --> D[("PostgreSQL<br/>runs · cola · eventos")]
   W["Workers<br/>coordinador + LangGraph<br/>(services/worker)"] --> D
   W --> P["Adaptadores de proveedores<br/>(packages/providers)"]
-  A --> F[("Storage privado")]
+  A --> F[("Storage privado<br/>nativo, sobre el volumen")]
   W --> F
-  S["Supabase Auth"] --> U
+  G["GoTrue (Auth)<br/>embebido"] --> U
   K["Keyring del despliegue"] --> W
+  subgraph C ["Un solo contenedor Docker (ADR-013)"]
+    U
+    A
+    W
+    D
+    F
+    G
+  end
 ```
 
 | Capa | Decisión | Por qué |
 | --- | --- | --- |
-| Frontend | React 19 + TypeScript estricto + Vite + TailwindCSS | Ecosistema compartido con el resto de productos WarlockCode |
+| Frontend | React 19 + TypeScript estricto + Vite + TailwindCSS | Servido por la propia API como estático; ecosistema compartido con el resto de productos WarlockCode |
 | Escena | PixiJS (versión fijada en lockfile) | Sprites, atlas, cámara y composición 2.5D |
 | API | Python 3.13 + FastAPI + Pydantic v2 | Contratos tipados, cercanía al motor de IA |
 | Orquestación | LangGraph detrás de interfaz propia | Fases, checkpoints, ramas y pausas humanas sin acoplar el dominio a la librería |
-| Trabajo durable | Cola en PostgreSQL + workers separados | Un debate no muere si cae la petición HTTP que lo inició |
-| Datos | PostgreSQL (Supabase), migraciones SQL, RLS | Integridad transaccional y permisos reales, no solo de UI |
-| Identidad | Supabase Auth | Google y correo, sesión renovable |
+| Trabajo durable | Cola en PostgreSQL + proceso worker | Un debate no muere si cae la petición HTTP que lo inició |
+| Datos | PostgreSQL embebido en el contenedor (o Supabase administrado como alternativa), RLS | Integridad transaccional y permisos reales, no solo de UI |
+| Identidad | GoTrue (el Auth open source de Supabase) embebido, o Supabase Cloud como alternativa | Google y correo, sesión renovable, sin depender de un servicio externo por defecto |
 | Secretos | Cifrado AEAD en aplicación + keyring externo | Separar datos almacenados de claves maestras (`ADR-006`) |
 | Observabilidad | OpenTelemetry + logs estructurados sin contenido sensible | Correlación de API, run, turno y proveedor |
-| Despliegue | Frontend en Cloudflare Pages; API/worker en Docker sobre Coolify | Alineado con la infraestructura habitual de WarlockCode |
+| **Despliegue** | **Una sola imagen Docker** (web + API + worker + PostgreSQL + GoTrue bajo un supervisor de procesos). Cloudflare Pages + Coolify queda como ruta alternativa para quien prefiera escalar servicios por separado. | `docker run` levanta el producto completo sin infraestructura externa (`ADR-013`) |
+| Arte | `tools/asset-forge/`: pipeline asistido por IA con cola de revisión humana y procedencia obligatoria | Producir los ~1.632 frames objetivo sin perder control de calidad (`ADR-014`) |
 
 <details>
 <summary><b>🔄 Máquina de estados de un run</b></summary>
@@ -274,13 +283,15 @@ warlock-oraculo/
 ├── packages/contracts/        # OpenAPI + JSON Schema → tipos TypeScript generados
 ├── packages/scene-runtime/    # Reducers visuales, pathfinding, cámara
 ├── assets/                    # Personajes Office Beans, salones, manifests, licencias
-├── supabase/                  # Migraciones SQL, RLS, seeds
+├── tools/asset-forge/         # Pipeline de generación de arte asistido por IA (ADR-014)
+├── supabase/                  # Migraciones SQL, RLS, seeds (también usado por la imagen única)
 ├── tests/                     # contract · integration · e2e · visual · security · evaluation
-├── infra/                     # Docker, compose, Coolify, Cloudflare
+├── infra/                     # Docker, compose, Coolify, Cloudflare (ruta alternativa de despliegue)
 ├── docs/
 │   ├── product/                # Especificación maestra (fuente canónica)
-│   ├── adr/                    # ADR-001 a ADR-012
+│   ├── adr/                    # ADR-001 a ADR-014
 │   └── design, api, operations, agents/
+├── Dockerfile                  # Imagen única: web + API + worker + Postgres + GoTrue (ADR-013)
 └── AGENTS.md                  # Reglas e instrucciones para quien (o lo que) toque este repo
 ```
 
@@ -305,11 +316,13 @@ Nada de pixel art ni de personajes "prestados" de otro juego. La oficina es 2.5D
 
 El mapeo es puramente visual, no una jerarquía de autoridad: color, tono de piel o edad nunca codifican nivel de experiencia. Contrato técnico objetivo (sección 5.3 de la especificación, **meta de producción, no estado actual**): lienzo maestro 512×512, pivote normalizado en los pies `(0.5, 0.88)`, 8 direcciones para `idle`/`walk` y 4 para los otros nueve estados semánticos (`speaking`, `using_tool`, `waiting_human`, `error`...) &mdash; **272 frames por arquetipo, 1.632 frames en total** antes de variantes de paleta. Cada asset se distribuye con manifest, licencia y autoría registrados en `assets/licenses/`; si un asset falta, la escena muestra una pose estática identificada y reporta el error, nunca cambia de estilo visual en silencio.
 
+**Cómo se producen esos 1.632 frames (`ADR-014`):** `tools/asset-forge/` es un pipeline asistido por IA, no un generador automático sin supervisión. Toma el prompt maestro parametrizado + la ficha aprobada de cada arquetipo como referencia, condiciona cada frame con el anterior de su secuencia para sostener continuidad, y encola todo resultado como `pendiente_revisión`: nada entra a un atlas sin aprobación humana explícita y su procedencia (proveedor, modelo, prompt, quién aprobó) registrada. Acelera la producción; no reemplaza la aprobación de fichas ni la revisión de continuidad a tamaño real de uso.
+
 ---
 
 ## 📊 Estado actual
 
-**Hecho:** especificación maestra completa (visión, cinco salas, arquitectura, modelo de datos, API, dirección visual), scaffold del monorepo, `AGENTS.md`, 12 ADR registrados como pendientes, y el backlog completo importado a GitHub como **14 milestones, 84 issues padre y 420 sub-issues nativos**, con dependencias resueltas y trazabilidad `WO-XXX` conservada en cada título.
+**Hecho:** especificación maestra completa (visión, cinco salas, arquitectura, modelo de datos, API, dirección visual), scaffold del monorepo, `AGENTS.md`, 14 ADR (12 pendientes de redactar en `WO-002`, `ADR-013` y `ADR-014` ya decididos tras revisión de arquitectura del 2026-10-11), y el backlog completo importado a GitHub como **14 milestones, 84 issues padre y 420 sub-issues nativos**, con dependencias resueltas y trazabilidad `WO-XXX` conservada en cada título.
 
 **No hecho todavía:** ninguna línea de código de producto. `apps/web`, `services/api`, `services/worker` y los `packages/*` son esqueletos de carpetas, no implementaciones. Nada en este repositorio debe leerse como "funcional" hasta que su issue correspondiente esté cerrado con evidencia real.
 

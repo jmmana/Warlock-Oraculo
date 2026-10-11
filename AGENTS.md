@@ -6,7 +6,7 @@ Warlock Oráculo es un producto SaaS final: un centro de deliberación multiagen
 
 1. **Especificación maestra:** [`docs/product/Warlock-Oraculo-Especificacion-Maestra.md`](docs/product/Warlock-Oraculo-Especificacion-Maestra.md). Contiene visión, las cinco salas, arquitectura, contratos, modelo de datos, API, dirección visual y el backlog completo (14 epics, 84 issues padre `WO-001`–`WO-084`, 420 subissues). Léela antes de tocar código.
 2. **Backlog ejecutable:** vive en [GitHub Issues](../../issues) de este repositorio, no en un archivo aparte. Cada epic es un [milestone](../../milestones); cada issue padre conserva su ID `WO-XXX` en el título; cada subissue (`WO-XXX.N`) es un sub-issue nativo de GitHub enlazado a su padre. Los IDs `WO-*` son estables aunque GitHub asigne otro número de issue.
-3. **ADR:** `docs/adr/ADR-001` a `ADR-012` (sección 6.2 de la especificación). Si tu issue afecta una decisión registrada, actualiza el ADR correspondiente o documenta la excepción en el PR.
+3. **ADR:** `docs/adr/ADR-001` a `ADR-014` (sección 6.2 de la especificación). `ADR-013` (imagen Docker única con Postgres/Auth embebidos) y `ADR-014` (pipeline de arte asistido por IA) ya están decididos; el resto se redactan en `WO-002`. Si tu issue afecta una decisión registrada, actualiza el ADR correspondiente o documenta la excepción en el PR.
 
 ## Antes de tocar código
 
@@ -29,9 +29,13 @@ No esperes a que alguien te asigne tarea por tarea. Un issue está disponible cu
 | `packages/contracts/` | OpenAPI + JSON Schema → `generated-ts/` | `make contracts` (a definir en WO-009) |
 | `packages/scene-runtime/` | Reducers de estado visual, pathfinding, cámara (independiente del motor deliberativo) | `pnpm test` |
 | `assets/` | Personajes Office Beans, salones, manifests, licencias (WO-055 a WO-060) | validador de manifest (a definir en WO-060) |
-| `supabase/` | Migraciones SQL, RLS, seeds | `supabase db reset` |
+| `tools/asset-forge/` | Pipeline de generación de arte asistido por IA (`ADR-014`), fuera del runtime del producto | a definir junto con WO-056/WO-057 |
+| `supabase/` | Migraciones SQL, RLS, seeds (reutilizadas por la imagen Docker única) | `supabase db reset` |
+| `Dockerfile` (raíz) | Imagen única: web + API + worker + PostgreSQL + GoTrue bajo un supervisor de procesos (`ADR-013`) | a definir en WO-079 |
 
 Hasta que `WO-007` (bootstrap del monorepo) esté cerrado, estas carpetas son solo el esqueleto de paquetes: cada una trae un `README.md` con su propósito y el/los issue(s) que la llenan de código real.
+
+**Despliegue (`ADR-013`):** la ruta primaria es una sola imagen Docker autocontenida (PostgreSQL y GoTrue/Auth embebidos, storage nativo en la API). Supabase Cloud administrado, o servicios separados (Cloudflare Pages + Coolify), siguen siendo rutas alternativas válidas y documentadas, no el camino por defecto. No asumas en el código que Supabase Cloud siempre está disponible: el `SecretStore`, el cliente de Auth y el de Storage se escriben contra una interfaz propia, con un adaptador local (Postgres+GoTrue embebidos) y uno remoto (Supabase Cloud) intercambiables por configuración.
 
 ## Reglas no negociables
 

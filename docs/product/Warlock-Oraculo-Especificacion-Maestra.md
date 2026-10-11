@@ -347,7 +347,15 @@ Los arrays abreviados del ejemplo no sustituyen la cantidad de frames requerida.
 7. Probar en sala real a tamaño de uso; una hoja bonita no garantiza un sprite legible.
 8. Crear animaciones finales con consistencia temporal; no usar una cuadrícula generada como atlas sin cortar, nombrar y validar frames.
 
-Prompt maestro sugerido para el equipo de assets:
+**Revisión 2026-10-11 (ADR-014): pipeline de generación asistida por IA.** Los pasos anteriores asumían un equipo de diseño ejecutándolos a mano; se formaliza aquí como una herramienta real del repositorio, no solo un proceso documentado:
+
+- **`tools/asset-forge/`** (paquete propio, fuera del runtime del producto): CLI que toma el prompt maestro parametrizado (`[ROL]`, `[ACCESORIO]`, `[DIRECCIÓN]`, `[ESTADO]`, `[ÍNDICE]`/`[TOTAL]`), la ficha aprobada de cada arquetipo como imagen de referencia, y llama a un proveedor de generación de imágenes configurado por BYOK (mismo `ProviderAdapter`/`capability` que el resto del producto, sin credenciales embebidas en el repo) para producir cada frame candidato.
+- **Condicionamiento por referencia:** cada llamada incluye la ficha maestra aprobada y, cuando existe, el frame anterior de la misma secuencia, para mantener identidad, proporciones y continuidad; el prompt por sí solo no garantiza consistencia entre frames.
+- **Cola de revisión humana:** todo frame generado entra como `pendiente_revisión`; nadie lo empaqueta en un atlas sin aprobación explícita registrada (persona, fecha, versión). Un frame rechazado se regenera con el mismo seed/condicionamiento más una corrección puntual, no desde cero.
+- **Procedencia obligatoria:** cada frame aprobado registra en `assets/licenses/` el proveedor/modelo usado, el prompt final, la fecha y quién aprobó, igual que exige la sección 5.4 original para cualquier asset distribuido. Un frame generado por IA sin esa entrada no se considera listo para producción.
+- La herramienta acelera producción; no reemplaza los pasos 1, 2, 5 y 7 (fichas aprobadas primero, guía común, revisión de continuidad/alpha, prueba en sala a tamaño real). Generar 1.632 frames rápido y sin pasar esos filtros produce animaciones inconsistentes, no arte terminado.
+
+Prompt maestro sugerido para el pipeline:
 
 > Diseña un personaje original Office Bean para Warlock Oráculo: chibi profesional de oficina, cuerpo compacto, rostro visible y expresivo, lentes si corresponde, manos y zapatos definidos, ropa [ROL], accesorio [ACCESORIO]. Vista isométrica 2.5D [DIRECCIÓN], luz suave desde arriba a la izquierda, contorno limpio, sin pixel art, sin visor ni mochila, sin marcas de terceros. Mantén exactamente proporciones, rostro, ropa y escala de las referencias aprobadas. Fondo transparente, personaje completo centrado, margen uniforme y punto de apoyo de pies consistente. Estado [ESTADO], frame [ÍNDICE] de [TOTAL], con cambio pequeño y continuidad respecto al frame anterior. No añadir texto a la imagen.
 
@@ -413,9 +421,11 @@ Objetivos de prueba, no garantías previas: 60 fps con siete agentes en portáti
 | Archivos | Supabase Storage privado, interfaz reemplazable por S3. | Evidencias y exportaciones con permisos. |
 | Secretos | Cifrado de aplicación con AEAD y keyring externo. | Separar datos almacenados de claves maestras. |
 | Observabilidad | OpenTelemetry + logs estructurados sin contenido sensible por defecto. | Correlación de API, run, turno y proveedor. |
-| Despliegue | Frontend Cloudflare Pages; API/workers Docker en Coolify. | Alineación con infraestructura habitual. |
+| Despliegue | **Imagen Docker única** (web + API + worker + PostgreSQL embebido, orquestados por un supervisor de procesos dentro del mismo contenedor). Cloudflare Pages/Coolify queda como ruta alternativa documentada para quien prefiera escalar servicios por separado. | `docker run` levanta el producto completo sin infraestructura externa; ver ADR-013. |
 
 Las versiones se seleccionan y prueban al crear el repositorio; no usar `latest` en producción ni inventar un número de versión futuro. Registrar runtime Python/Node y dependencias en lockfiles. No introducir simultáneamente CrewAI, LangGraph y un scheduler independiente que compita por el mismo turno.
+
+**Revisión 2026-10-11 (todo-en-un-contenedor):** la decisión original de este documento separaba frontend (Cloudflare Pages) de API/worker (Coolify) y asumía Supabase como servicio gestionado. Se mantiene el uso de Supabase (Auth vía GoTrue, Storage, RLS sobre Postgres) como concepto y como ruta de producción a mayor escala, pero la **ruta de despliegue primaria y recomendada** pasa a ser una única imagen Docker autocontenida: PostgreSQL, GoTrue (el componente open source de Supabase Auth), la API, el worker y el frontend ya compilado corren como procesos dentro del mismo contenedor, gestionados por un supervisor (`supervisord` o `s6-overlay`), sin red externa obligatoria. El storage privado se implementa de forma nativa en la API (disco local/volumen con URLs firmadas de corta duración), sin depender del microservicio Storage de Supabase, para no sumar un quinto proceso al contenedor. Supabase Cloud (gestionado) sigue siendo una alternativa válida y documentada para equipos que prefieran no auto-alojar Postgres/Auth; en ese caso el mismo contenedor de la app se conecta a esos servicios externos en vez de arrancar sus copias locales. Ver ADR-013 para el detalle y las contrapartidas (un contenedor más simple de operar a cambio de que Postgres y la app compartan ciclo de vida: actualizar uno implica reiniciar el otro, y las copias de seguridad de la base de datos requieren disciplina adicional al no ser un servicio gestionado aparte por defecto).
 
 ### 6.2 ADR obligatorios
 
@@ -433,6 +443,8 @@ Las versiones se seleccionan y prueban al crear el repositorio; no usar `latest`
 | ADR-010 | Archivos no confiables y herramientas por allowlist. |
 | ADR-011 | Informes con resultados estructurados y validación de referencias. |
 | ADR-012 | Reproducción determinista de efectos visibles; texto LLM no determinista. |
+| ADR-013 | Imagen Docker única con PostgreSQL y Auth embebidos como ruta de despliegue primaria; Supabase Cloud como alternativa gestionada. |
+| ADR-014 | Pipeline asistido por IA para producir el arte de los Office Beans, con revisión humana y registro de procedencia. |
 
 ### 6.3 Topología
 
@@ -467,6 +479,7 @@ warlock-oraculo/
   packages/contracts/{openapi,events,schemas,generated-ts}
   packages/scene-runtime/src/{reducers,animation,pathfinding,camera}
   assets/{characters,rooms,props,manifests,licenses,source}
+  tools/asset-forge/{prompts,queue,src}
   supabase/{migrations,tests,seed.sql,config.toml}
   tests/{contract,integration,e2e,visual,security,fixtures,evaluation}
   infra/{docker,compose,coolify,cloudflare}
@@ -474,10 +487,13 @@ warlock-oraculo/
   .github/{workflows,ISSUE_TEMPLATE,PULL_REQUEST_TEMPLATE.md}
   AGENTS.md
   README.md
+  Dockerfile
   pnpm-workspace.yaml
   pyproject.toml
   compose.yaml
 ```
+
+`Dockerfile` en la raíz construye la imagen única de ADR-013 (web + API + worker + PostgreSQL + GoTrue bajo un supervisor de procesos). `tools/asset-forge/` es la herramienta de ADR-014; no se empaqueta dentro de esa imagen de producto, es un paquete de desarrollo/producción de assets.
 
 Los nombres de paquetes son contratos organizativos, no obligación de convertir todo en librerías publicadas. Mantener una instalación local reproducible y scripts únicos para cada comprobación.
 
@@ -852,11 +868,13 @@ No probar calidad de LLM con coincidencia literal. Usar fixtures de argumentos y
 
 ### 13.4 Despliegue y entorno
 
-Desarrollo: Supabase CLI local para Auth/Postgres/Storage; Compose levanta API, worker y servicios auxiliares necesarios. No afirmar que un contenedor PostgreSQL sustituye por sí solo toda Supabase. Alternativa documentada: Supabase administrado y Compose solo aplicación. Local Auth callback, URLs y CORS se configuran explícitamente.
+**Ruta primaria (ADR-013): imagen Docker única.** `docker run -p 8080:8080 -v warlock-data:/data warlock-oraculo` levanta el producto completo: PostgreSQL y GoTrue (Auth) arrancan como procesos locales sobre un volumen persistente, la API y el worker corren sobre ese Postgres local, y la API sirve el frontend ya compilado. Un supervisor de procesos (`supervisord` o `s6-overlay`) dentro de la imagen mantiene los cuatro procesos (Postgres, GoTrue, API, worker) y reinicia el que falle sin tumbar el contenedor completo; el healthcheck del contenedor solo reporta sano cuando los cuatro respondieron. Storage privado se implementa de forma nativa en la API sobre el mismo volumen, no como un quinto proceso. Variables de entorno configuran credenciales de proveedores de IA, dominio público (para cookies/CORS/callbacks de Auth) y el modo BYOK; no hay `latest` como tag de producción, cada imagen se publica versionada.
 
-Producción: frontend estático en Cloudflare Pages; API y worker en contenedores separados de Coolify; DB/Auth/Storage Supabase o instalación propia documentada. Definir hosts propuestos como configuración, no afirmar dominio provisionado. Reverse proxy con SSE sin buffering, heartbeat y timeout compatibles. Health/readiness y graceful shutdown: dejar de reclamar jobs, terminar frontera o perder lease de forma controlada.
+**Ruta alternativa: servicios separados.** Para quien prefiera escalar API y worker de forma independiente o usar Supabase gestionado (Cloud), el mismo código se despliega como antes: frontend estático en Cloudflare Pages, API y worker en contenedores separados (Coolify u otro orquestador), DB/Auth/Storage en Supabase administrado o una instalación propia de su pila completa. Ambas rutas comparten el mismo código de aplicación; lo que cambia es el `Dockerfile`/manifest de despliegue, no la lógica de dominio.
 
-Backups incluyen DB, archivos y material de keyring según procedimiento seguro separado. Backup cifrado sin clave recuperable hace inútiles las credenciales; planificar custodia y restauración. Probar restauración en entorno aislado, rotación y rollback de aplicación. No revertir migraciones destructivas ciegamente; expand/contract para runs activos.
+Desarrollo local: por defecto, `docker compose up` usa la misma imagen todo-en-uno de la ruta primaria (la forma más rápida de levantar el stack completo sin instalar nada aparte). Para quien trabaja directamente contra Supabase CLI (Auth/Postgres/Storage locales) como en versiones anteriores de este documento, esa ruta sigue disponible y documentada como alternativa de desarrollo, no como único camino. Local Auth callback, URLs y CORS se configuran explícitamente en ambos casos.
+
+Backups: con la imagen única, el volumen persistente (`/data`) contiene Postgres, GoTrue y los archivos de Storage; un backup del volumen cubre los tres. Backup cifrado sin clave recuperable hace inútiles las credenciales; planificar custodia y restauración del material de keyring por separado del volumen de datos. Probar restauración en entorno aislado, rotación y rollback de aplicación. No revertir migraciones destructivas ciegamente; expand/contract para runs activos. Actualizar la imagen implica reiniciar Postgres junto con la app: documentar la ventana de mantenimiento esperada, ya que no son servicios independientes en esta ruta.
 
 ### 13.5 Definición global de terminado
 
@@ -964,7 +982,7 @@ La dependencia local propuesta es secuencial dentro de cada padre. Un equipo pue
 
 **Historia de usuario:** Como arquitecto quiero decisiones registradas para que cada implementación respete el mismo reparto de responsabilidades.
 
-**Entregables esperados:** docs/adr/ADR-001 a ADR-012 y architecture.md.
+**Entregables esperados:** docs/adr/ADR-001 a ADR-014 y architecture.md.
 
 **Subissues:**
 
@@ -991,7 +1009,7 @@ La dependencia local propuesta es secuencial dentro de cada padre. Un equipo pue
 
 **Criterios de aceptación del padre:**
 
-- [ ] Los 12 ADR iniciales existen y no se contradicen.
+- [ ] Los 14 ADR iniciales existen y no se contradicen.
 - [ ] Existe un único dueño del scheduling de cada run.
 - [ ] El diagrama distingue log de eventos de checkpoint store.
 - [ ] Cada frontera de confianza tiene controles en código previstos.

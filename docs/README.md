@@ -3,7 +3,7 @@
 | Documento | Qué contiene |
 | --- | --- |
 | [`product/Warlock-Oraculo-Especificacion-Maestra.md`](product/Warlock-Oraculo-Especificacion-Maestra.md) | Fuente canónica: visión, personas, las cinco salas, dirección visual, arquitectura, modelo de datos, API/contratos, el backlog completo (14 epics, 84 issues, 420 subissues) y la instrucción maestra para agentes. |
-| [`adr/`](adr) | Decisiones de arquitectura (ADR-001 a ADR-012, sección 6.2 de la especificación). Se llenan en `WO-002`. |
+| [`adr/`](adr) | Decisiones de arquitectura (ADR-001 a ADR-014, sección 6.2 de la especificación). ADR-001 a ADR-012 se llenan en `WO-002`; ADR-013 (despliegue en un solo contenedor) y ADR-014 (pipeline de arte asistido por IA) ya están redactados. |
 | [`design/`](design) | Biblia visual, sistema de diseño y manifests de personajes/salones (epic E10). |
 | [`api/`](api) | Documentación generada de la API una vez publicado el contrato OpenAPI (`WO-009`). |
 | [`operations/`](operations) | Runbooks de despliegue, backup/restore y rotación de claves (epic E14). |
